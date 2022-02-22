@@ -6,6 +6,10 @@ function Weather() {
   const [weath, setWeath] = useState();
   const [error, setError] = useState();
   //
+  const latNum = 33.44;
+  const lonNum = -94.04;
+  const ApiKey = "37f731d78f30eee5072bbb693ddacb40";
+  //
   const API_URL =
     "https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=current,minutely,hourly,alerts&appid=37f731d78f30eee5072bbb693ddacb40";
   //
