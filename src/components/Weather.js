@@ -22,8 +22,15 @@ function Weather() {
   if (error) console.log(error);
   //
   return (
-    <div>
-      <h1>Weather</h1>
+    <div style={{ display: "flex" }}>
+      {weath.daily.map((item) => (
+        <div style={{ border: "1px solid black", margin: "1rem" }}>
+          <p>max={item.dt}</p>
+          <p>max={item.temp.max}</p>
+          <p>min={item.temp.min}</p>
+          <p>description = {item.weather[0].description}</p>
+        </div>
+      ))}
     </div>
   );
 }
