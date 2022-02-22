@@ -16,7 +16,10 @@ function Weather() {
           })
           .catch((error) => setError(error));
       }, []);
-      //
+    //
+      if (weath === undefined) return <h1>Loading</h1>;
+      if (error) console.log(error);
+    //   
     return (
         <div>
             <h1>Weather</h1>
