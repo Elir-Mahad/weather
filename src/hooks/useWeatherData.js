@@ -9,3 +9,14 @@ const API_KEY = process.env.REACT_APP_API_KEY;
  */
 
 const isDesiredIndex = (_, i) => i % 8 === 0;
+
+/**
+ * Given the name of a city.
+ * And an optional options object.
+ * Produce a string
+ * of the appropiate OpenWeatherMap API url
+ * to get the desired data.
+ */
+const createApiUrl = (city, { units = "standard" }) => {
+  return `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=${units}&appid=${API_KEY}`;
+};
