@@ -3,9 +3,9 @@ import WeekDay from "./WeekDay/WeekDay.js";
 import WeatherImage from "./WeatherImage.js";
 import TemperatureGroup from "./TemperatureGroup/TemperatureGroup.js";
 
-function WeatherIndicator() {
+function WeatherIndicator({ data, today }) {
   return (
-    <div>
+    <div className={`indicator ${today ? "today" : ""}`}>
       <WeekDay />
       <WeatherImage />
       <TemperatureGroup />
