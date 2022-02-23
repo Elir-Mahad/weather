@@ -1,6 +1,6 @@
 import React from "react";
 
-function TemperatureGroup() {
+function TemperatureGroup({ min, max }) {
   return (
     <div className="temp-group">
       <p className="max-temp">max degree</p>
