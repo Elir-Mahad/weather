@@ -9,7 +9,7 @@ function Weather() {
   const latNum = 33.44;
   const lonNum = -94.04;
   const apiKey = "37f731d78f30eee5072bbb693ddacb40";
-  const API_URL = `https://api.openweathermap.org/data/2.5/onecall?lat=${latNum}&lon=${lonNum}&exclude=current,minutely,hourly,alerts&appid=${apiKey}`;
+  const API_URL = `https://api.openweathermap.org/data/2.5/onecall?lat=${latNum}&lon=${lonNum}&exclude=current,minutely,hourly,alerts&cnt=5&appid=${apiKey}`;
   //
   useEffect(() => {
     fetch(API_URL)
@@ -19,6 +19,8 @@ function Weather() {
       })
       .catch((error) => setError(error));
   }, []);
+  //
+  console.log(weath);
   //
   if (weath === undefined) return <h1>Loading</h1>;
   if (error) console.log(error);
