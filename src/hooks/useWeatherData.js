@@ -48,47 +48,81 @@ const createApiUrl = (city, { units = "standard" }) => {
  */
 
 const useWeatherData = (city, options) => {
+  //
   const [isLoading, setIsLoading] = useState(true);
+  //
   const [error, setError] = useState(null);
+  //
   const [data, setData] = useState();
+  //
 
   const apiUrl = createApiUrl(city, options);
+  //
 
   useEffect(() => {
+    //
     const getWeatherData = async () => {
+      // The constant getweather data is the custom hook
       try {
+        //
         const res = await fetch(apiUrl);
+        // fetch url
         if (!res.ok) {
+          // if the response was not successful
           throw new Error(`The status of the response is: ${res.status}`);
+          //    show this error
         }
         const data = await res.json();
+        // the const data stores the response json
 
         const dataArr = data.list.filter(isDesiredIndex).map((d) => {
+          // the const dataArr stores a process
+          // enter the data object
+          // enter the list
+          // filter using the isDesiredIndex function
+          // map the items
           const { dt_txt, main, weather } = d;
+          //
 
           const icon = weather[0].icon.slice(0, -1);
+          // the const icon stores an endpoint
           const min = main.temp_min.toFixed();
+          // the const min stores the min temp endpoint rounded up
           const max = main.temp_max.toFixed();
+          // the const max store the max temp endpoint
           const date = new Date(dt_txt).toLocaleDateString("en-US", {
             weekday: "short",
           });
+          // the const data stores the dt_text end point converted to short weekday name
 
           return { date, max, min, icon };
+          // return the data(weekday short name), max (max temp), min (min temp), icon (weather icon)
         });
 
         setData(dataArr);
+        // set the constant data to the dataArr
         setIsLoading(false);
+        // set Isloading to false
       } catch (err) {
+        // if there is an error
         setError(err.message);
+        // set error message to the const error
         setIsLoading(false);
+        // set loading to false
       }
     };
     getWeatherData();
+    //
   }, [apiUrl]);
+  //
 
   return {
+    //
     loading: isLoading,
+    //
     error,
+    //
     data,
+    //
   };
 };
