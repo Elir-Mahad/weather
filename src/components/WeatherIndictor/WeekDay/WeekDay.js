@@ -1,6 +1,6 @@
 import React from "react";
 
-function WeekDay() {
+function WeekDay({ day }) {
   return (
     <div>
       <p className="day">{day}</p>
