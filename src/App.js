@@ -8,7 +8,7 @@ function App() {
     //
   });
   return (
-    <div className="App">
+    <div className="app-container">
       <h1>Weather</h1>
     </div>
   );
