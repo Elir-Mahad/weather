@@ -12,7 +12,7 @@ const WEATHER_ICON_DESCRIPTION = {
   50: "mist",
 };
 
-function WeatherImage() {
+function WeatherImage({ id }) {
   return (
     <div>
       <h1>Weather image icons</h1>
