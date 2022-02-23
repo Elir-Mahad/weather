@@ -6,9 +6,9 @@ import TemperatureGroup from "./TemperatureGroup/TemperatureGroup.js";
 function WeatherIndicator({ data, today }) {
   return (
     <div className={`indicator ${today ? "today" : ""}`}>
-      <WeekDay />
-      <WeatherImage />
-      <TemperatureGroup />
+      <WeekDay day={data.date} />
+      <WeatherImage id={data.icon} />
+      <TemperatureGroup min={data.min} max={data.max} />
     </div>
   );
 }
