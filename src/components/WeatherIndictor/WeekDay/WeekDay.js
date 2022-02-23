@@ -3,7 +3,7 @@ import React from "react";
 function WeekDay() {
   return (
     <div>
-      <h1>Week day</h1>
+      <p className="day">{day}</p>
     </div>
   );
 }

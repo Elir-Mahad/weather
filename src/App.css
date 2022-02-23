@@ -48,3 +48,10 @@
 .max-temp {
   color: var(--font-color-dark);
 }
+
+/* Week day css below */
+
+.day {
+  margin: 1rem 0 0 0;
+  font-size: var(--font-size-regular);
+}
