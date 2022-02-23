@@ -5,7 +5,7 @@ import Loading from "./components/Loading/Loading.js";
 import ErrorDisplay from "./components/ErrorDisplay/ErrorDisplay.js";
 
 function App() {
-  const { data } = useWeatherData("santo domingo", {
+  const { data, loading, error } = useWeatherData("santo domingo", {
     //
     units: "metric",
     //
