@@ -8,3 +8,11 @@
   justify-content: center;
   align-items: center;
 }
+
+/* error display has no css */
+
+/* Loading css below */
+
+.loader {
+  font-size: var(--font-size-regular);
+}
