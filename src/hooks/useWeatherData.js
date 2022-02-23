@@ -188,3 +188,5 @@ const useWeatherData = (city, options) => {
     //
   };
 };
+
+export { useWeatherData };
