@@ -17,6 +17,13 @@
   font-size: var(--font-size-regular);
 }
 
+/* Weather indicator group css below */
+
+.indicator-group {
+  display: flex;
+  border: 1px solid var(--color-active);
+}
+
 /* Weather indicator file css below */
 
 .indicator {

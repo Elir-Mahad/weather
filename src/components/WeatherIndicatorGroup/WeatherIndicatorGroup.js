@@ -2,7 +2,7 @@ import React from "react";
 
 function WeatherIndicatorGroup() {
   return (
-    <div>
+    <div className="indicator-group">
       <h1>Weather indicator group</h1>
     </div>
   );
