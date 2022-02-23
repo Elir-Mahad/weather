@@ -46,3 +46,49 @@ const createApiUrl = (city, { units = "standard" }) => {
  * min: the min temperature for that day.
  * max: the max temperature for that day.
  */
+
+const useWeatherData = (city, options) => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [data, setData] = useState();
+
+  const apiUrl = createApiUrl(city, options);
+
+  useEffect(() => {
+    const getWeatherData = async () => {
+      try {
+        const res = await fetch(apiUrl);
+        if (!res.ok) {
+          throw new Error(`The status of the response is: ${res.status}`);
+        }
+        const data = await res.json();
+
+        const dataArr = data.list.filter(isDesiredIndex).map((d) => {
+          const { dt_txt, main, weather } = d;
+
+          const icon = weather[0].icon.slice(0, -1);
+          const min = main.temp_min.toFixed();
+          const max = main.temp_max.toFixed();
+          const date = new Date(dt_txt).toLocaleDateString("en-US", {
+            weekday: "short",
+          });
+
+          return { date, max, min, icon };
+        });
+
+        setData(dataArr);
+        setIsLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setIsLoading(false);
+      }
+    };
+    getWeatherData();
+  }, [apiUrl]);
+
+  return {
+    loading: isLoading,
+    error,
+    data,
+  };
+};
