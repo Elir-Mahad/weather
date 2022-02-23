@@ -73,48 +73,110 @@ const useWeatherData = (city, options) => {
           //    show this error
         }
         const data = await res.json();
-        // the const data stores the response json
+        // console.log(data)
+        // this log will show you all the unfiltered data
 
-        const dataArr = data.list.filter(isDesiredIndex).map((d) => {
+        const dataArr = data.list //
           // the const dataArr stores a process
           // enter the data object
-          // enter the list
-          // filter using the isDesiredIndex function
-          // map the items
-          const { dt_txt, main, weather } = d;
-          //
+          // enter the list property
 
-          const icon = weather[0].icon.slice(0, -1);
-          // the const icon stores an endpoint
-          const min = main.temp_min.toFixed();
-          // the const min stores the min temp endpoint rounded up
-          const max = main.temp_max.toFixed();
-          // the const max store the max temp endpoint
-          const date = new Date(dt_txt).toLocaleDateString("en-US", {
-            weekday: "short",
+          // the list property contains an array of 40 objects
+          // 8 objects are dedicated for each day
+          // there are a total of 5 days captured
+          // the current day + 4 coming days
+
+          // each object contains
+          // the weather data at 3 hour intervals
+          // time slots: 0, 3, 6, 9, 12, 15, 18, 21
+
+          .filter(isDesiredIndex)
+          // filter the list array
+          // using the isDesiredIndex
+
+          // this will output 5 objects
+          // each object will contain the weather data for each day at the 12 pm time slot
+          // and all other objects will be excluded
+
+          // you can see the 5 objects by
+          // add this log console.log(dataArr)
+          // at the end of the below mapping blog
+
+          .map((singleDayData) => {
+            // map all 5 objects
+            // each object containing the following properties: dt, main, weather, clouds, wind, visibility, pop, rain, sys
+            // these properties have values such as arrays, objects, strings, etc
+
+            // console.log(singleDayData)
+            // this log will output all 5 objects
+
+            const { dt_txt, main, weather } = singleDayData;
+            // from each object we will use only
+            // the dt_text, main, and weather properties
+
+            // dt_text property has the value of a date string
+            // main property has the value of an object that contains different temperatures
+            // weather property has the value of an array that contains a object which contains icon id and description
+
+            const icon = weather[0].icon
+              // The const icon stores a process
+              // enter the weather property
+              // enter the array
+              // grab the value of the icon property
+              .slice(0, -1);
+            // slice the last element (letter d)
+
+            const min = main.temp_min
+              // The const min stores a process
+              // enter the main property
+              // grab the value of the temp_min property
+              .toFixed();
+            // convert the number to a string
+            //and round it to the nearest non-decimal number
+
+            const max = main.temp_max
+              // The const max stores a process
+              // enter the main property
+              // grab the value of the temp_max property
+              .toFixed();
+            // convert the number to a string
+            //and round it to the nearest non-decimal number
+
+            const date = new Date(dt_txt)
+              // The const date stores a process
+              // create a new data instance
+              // of the value that's in the dt_txt property
+              .toLocaleDateString("en-US", { weekday: "short" });
+            // use the toLocaleDateString method to return
+            // a representation of the data thats in english
+            // and that is the shortened weekday
+
+            return { date, max, min, icon };
+            // return the dataArr
+            // which will include an object
+            // that contains the 4 properities
+            // date, max, min, icon
           });
-          // the const data stores the dt_text end point converted to short weekday name
 
-          return { date, max, min, icon };
-          // return the data(weekday short name), max (max temp), min (min temp), icon (weather icon)
-        });
+        // console.log(dataArr)
+        // This log will show 5 objects
+        // each object will contain 4 properities
+        // date, max, min, icon
 
         setData(dataArr);
-        // set the constant data to the dataArr
+        // set the value of the constant data as the dataArr
         setIsLoading(false);
-        // set Isloading to false
+        // set value of the const isLoading to false
       } catch (err) {
         // if there is an error
         setError(err.message);
-        // set error message to the const error
+        // sett the value of the const error to the erro message
         setIsLoading(false);
-        // set loading to false
+        // set the value of the const isLoading to false
       }
     };
     getWeatherData();
-    //
   }, [apiUrl]);
-  //
 
   return {
     //
