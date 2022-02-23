@@ -12,7 +12,6 @@ function App() {
   });
   return (
     <div className="app-container">
-      <h1>Weather</h1>
       {loading && <Loading />}
       {error && <ErrorDisplay error={error} />}
       {data && !error && <WeatherIndicatorGroup data={data} />}
