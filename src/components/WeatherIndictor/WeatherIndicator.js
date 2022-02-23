@@ -1,9 +1,14 @@
 import React from "react";
+import WeekDay from "./WeekDay/WeekDay.js";
+import WeatherImage from "./WeatherImage.js";
+import TemperatureGroup from "./TemperatureGroup/TemperatureGroup.js";
 
 function WeatherIndicator() {
   return (
     <div>
-      <h1>Weather indicator</h1>
+      <WeekDay />
+      <WeatherImage />
+      <TemperatureGroup />
     </div>
   );
 }
