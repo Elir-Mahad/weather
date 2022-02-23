@@ -2,8 +2,9 @@ import React from "react";
 
 function TemperatureGroup() {
   return (
-    <div>
-      <h1>Temp group</h1>
+    <div className="temp-group">
+      <p className="max-temp">max degree</p>
+      <p> min degree</p>
     </div>
   );
 }
