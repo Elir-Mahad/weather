@@ -15,7 +15,12 @@ const WEATHER_ICON_DESCRIPTION = {
 function WeatherImage({ id }) {
   return (
     <div>
-      <h1>Weather image icons</h1>
+      <img
+        //
+        src={`./assets/images/${id}.png`}
+        //
+        alt={WEATHER_ICON_DESCRIPTION[id]}
+      />
     </div>
   );
 }
