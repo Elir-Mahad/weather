@@ -1,5 +1,5 @@
 import "./App.css";
-import Weather from "./components/Weather";
+import { useWeatherData } from "./hooks/useWeatherData.js";
 
 function App() {
   return (
