@@ -1,9 +1,10 @@
 import React from "react";
-
+import WeatherIndicator from "../WeatherIndictor/WeatherIndicator";
+//
 function WeatherIndicatorGroup() {
   return (
     <div className="indicator-group">
-      <h1>Weather indicator group</h1>
+      <WeatherIndicator />
     </div>
   );
 }
